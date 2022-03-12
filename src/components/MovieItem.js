@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { Box, Image, Badge, Button } from "@chakra-ui/react";
 import { StarIcon, PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
+import { useDispatch } from "react-redux";
+import {
+  addToFavourite,
+  removeFromFavourite,
+} from "../actions/favouriteActions";
 
 export default function MovieItem(props) {
   const { movie } = props;
   const imageUrl = "https://image.tmdb.org/t/p/w500/";
   const [favourites, setFavourites] = useState([]);
+  const dispatch = useDispatch();
 
-  const addFavoriteMovie = () => {
-    console.log("movei");
-    console.log(movie);
-
-    const newFavouriteList = [...favourites];
-    setFavourites(newFavouriteList);
-    saveToLocalStorage(newFavouriteList);
+  const addFavoriteMovieHandler = (e) => {
+    e.preventDefault();
+    dispatch(addToFavourite(movie));
   };
 
-  const saveToLocalStorage = (items) => {
-    // console.log("test");
-    //localStorage.getItem("react-movie-app-favourites", JSON.stringify(items));
-    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
+  const deleteFavoriteMovieHandler = (e) => {
+    e.preventDefault();
+    dispatch(removeFromFavourite(movie.id));
   };
+
+  //   const saveToLocalStorage = (items) => {
+  //     // console.log("test");
+  //     //localStorage.getItem("react-movie-app-favourites", JSON.stringify(items));
+  //     localStorage.setItem("favourites", JSON.stringify(items));
+  //   };
 
   useEffect(() => {
-    const movieFavourites = JSON.parse(
-      localStorage.getItem("react-movie-app-favourites")
-    );
-    console.log("fdfd");
-    console.log(movieFavourites);
-    setFavourites(movieFavourites);
+    //  const movieFavourites = JSON.parse(localStorage.getItem("favourites"));
+    //  console.log("fdfd");
+    //console.log(movieFavourites);
+    //setFavourites(movieFavourites);
   }, []);
 
   return (
@@ -81,8 +86,11 @@ export default function MovieItem(props) {
             </Box>
           </Box>
           <Box>
-            <Button onClick={addFavoriteMovie} movie={movie}>
-              Add To Favorites
+            <Button onClick={addFavoriteMovieHandler}>Add To Favorites</Button>
+          </Box>
+          <Box>
+            <Button onClick={deleteFavoriteMovieHandler}>
+              Delete From Favorites
             </Button>
           </Box>
         </Box>
