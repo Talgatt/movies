@@ -5,17 +5,22 @@ import {
   GET_MOVIES_SUCCESS,
 } from "../constants/movieConstants";
 
-export const getProjects = () => async (dispatch) => {
+export const getMovies = () => async (dispatch) => {
   dispatch({
     type: GET_MOVIES_REQUEST,
   });
+  const req = "top_rated";
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(`${API_KEY}`);
   try {
     const res = await axios.get(
-      "https://api.themoviedb.org/3/movie/550?api_key=e36e97689319dcfa2ccb4935168f5fbb"
+      `https://api.themoviedb.org/3/movie/${req}?api_key=e36e97689319dcfa2ccb4935168f5fbb`
     );
+    console.log("show data");
+    console.log(res.data.results);
     dispatch({
       type: GET_MOVIES_SUCCESS,
-      payload: res.data,
+      payload: res.data.results,
     });
   } catch (err) {
     dispatch({
