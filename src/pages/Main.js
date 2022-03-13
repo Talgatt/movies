@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Accordion,
@@ -45,8 +45,13 @@ import Movie from "./Movie";
 import MovieList from "./MovieList";
 
 export default function Main() {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+
   const navigate = useNavigate();
 
   const navigateToDiscover = (type, state) => {

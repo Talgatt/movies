@@ -6,13 +6,19 @@ import {
   addToFavourite,
   removeFromFavourite,
 } from "../actions/favouriteActions";
+import { useSelector } from "react-redux";
+import Genre from "./Genre";
 
 export default function MovieItem(props) {
-  const { movie } = props;
+  const { movie, isFavourite } = props;
+  const genres = useSelector((state) => state.genres);
+
   const imageUrl = "https://image.tmdb.org/t/p/w500/";
   const [favourites, setFavourites] = useState([]);
   const dispatch = useDispatch();
 
+  console.log("genre ssss");
+  console.log(movie.genre_ids);
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();
     dispatch(addToFavourite(movie));
@@ -39,8 +45,9 @@ export default function MovieItem(props) {
   return (
     <div>
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-        <Image src={`${imageUrl}${movie.poster_path}`} alt="no image" />
-
+        <a href={`/movie/${movie._id || movie.id}`}>
+          <Image src={`${imageUrl}${movie.poster_path}`} alt="no image" />
+        </a>
         <Box p="6">
           <Box display="flex" alignItems="baseline">
             <Badge borderRadius="full" px="2" colorScheme="teal">
@@ -55,20 +62,26 @@ export default function MovieItem(props) {
               ml="2"
             ></Box>
           </Box>
-
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            isTruncated
-          >
-            {movie.title}
+          <a href={`/movie/${movie._id || movie.id}`}>
+            <Box
+              mt="1"
+              fontWeight="semibold"
+              as="h4"
+              lineHeight="tight"
+              isTruncated
+            >
+              {movie.title}
+            </Box>
+          </a>
+          <Box>
+            <Box as="span" color="gray.600" fontSize="sm">
+              {movie.release_date}
+            </Box>
           </Box>
 
           <Box>
             <Box as="span" color="gray.600" fontSize="sm">
-              {movie.release_date}
+              <Genre genre_ids={movie.genre_ids} />
             </Box>
           </Box>
 
@@ -85,9 +98,14 @@ export default function MovieItem(props) {
               {movie.vote_count} votes
             </Box>
           </Box>
-          <Box>
-            <Button onClick={addFavoriteMovieHandler}>Add To Favorites</Button>
-          </Box>
+          {!isFavourite && (
+            <Box>
+              <Button onClick={addFavoriteMovieHandler}>
+                Add To Favorites
+              </Button>
+            </Box>
+          )}
+
           <Box>
             <Button onClick={deleteFavoriteMovieHandler}>
               Delete From Favorites

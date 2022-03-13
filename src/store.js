@@ -1,17 +1,30 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { favouriteReducer } from "./reducers/favouritesReducer";
-import { moviesReducer, movieReducer } from "./reducers/movieReducer";
+import {
+  moviesReducer,
+  movieReducer,
+  genreReducer,
+  similarReducer,
+  recommendationsReducer,
+} from "./reducers/movieReducer";
 
 const initialState = {
   favouriteItems: localStorage.getItem("favouriteItems")
     ? JSON.parse(localStorage.getItem("favouriteItems"))
     : [],
+  moviesList: {
+    movies: [],
+  },
 };
 
 const reducer = combineReducers({
   moviesList: moviesReducer,
+  movieDetails: movieReducer,
   favouriteItems: favouriteReducer,
+  genres: genreReducer,
+  similar: similarReducer,
+  recommendations: recommendationsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
