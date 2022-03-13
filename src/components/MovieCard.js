@@ -105,12 +105,13 @@ export default function MovieItem(props) {
               </Button>
             </Box>
           )}
-
-          <Box>
-            <Button onClick={deleteFavoriteMovieHandler}>
-              Delete From Favorites
-            </Button>
-          </Box>
+          {isFavourite && (
+            <Box>
+              <Button onClick={deleteFavoriteMovieHandler}>
+                Delete From Favorites
+              </Button>
+            </Box>
+          )}
         </Box>
       </Box>
     </div>

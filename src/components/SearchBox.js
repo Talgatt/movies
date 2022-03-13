@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
 export default function SearchBox(props) {
   const [name, setName] = useState("");
+  const query = useParams();
   const submitHandler = (e) => {
     e.preventDefault();
-    props.history.push(`/search/name/${name}`);
+    props.history.push(`/search/${query}`);
   };
 
   return (

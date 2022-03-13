@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import SearchBox from "../components/SearchBox";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieList(props) {
   const PER_PAGE = 5;
@@ -28,6 +29,7 @@ export default function MovieList(props) {
   const searchList = useSelector((state) => state.searchList);
   const { searchResult } = searchList;
   //const {searchMovies} = moviesSearch;
+  const navigate = useNavigate();
 
   function handlePageClick({ selected: selectedPage }) {
     setCurrentPage(selectedPage);
@@ -42,20 +44,35 @@ export default function MovieList(props) {
   const offset = currentPage * PER_PAGE;
 
   function handleInput() {
-    if (searchQuery.length > 1) {
-      //props.searchMovies(searchQuery).then((m) => setMovies(m));
-      dispatch(searchMovies(searchQuery));
-      setMovieData(searchResult);
-    }
-    setSearchQuery("");
+    // if (searchQuery.length > 1) {
+    //   //props.searchMovies(searchQuery).then((m) => setMovies(m));
+    //   dispatch(searchMovies(searchQuery));
+    //   setMovieData(searchResult);
+    // }
+    // setSearchQuery("");
+    // e.preventDefault();
+    // props.history.push(`/search/${searchQuery}`);
+    navigate(`/search/${searchQuery}`);
   }
+
+  // const handleInput = (e) => {
+  //   e.preventDefault();
+  //   if (searchQuery.length > 1) {
+  //     //props.searchMovies(searchQuery).then((m) => setMovies(m));
+  //     dispatch(searchMovies(searchQuery));
+  //     setMovieData(searchResult);
+  //   }
+  //   setSearchQuery("");
+  // };
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovies("top_rated"));
     console.log("settting movies");
     console.log(movies);
+    //if (movies !== undefined) {
     setMovieData(movies);
+    //}
   }, []);
 
   return loading ? (
@@ -64,12 +81,12 @@ export default function MovieList(props) {
     <div>Error ...</div>
   ) : (
     <div>
-      MovieList
       {/* <div>
         {movies.map((movie) => (
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div> */}
+
       <Box bg="#747474" p="10">
         <Flex p="10" align="center" justifyContent="center" alignItems="center">
           <Input
@@ -87,8 +104,8 @@ export default function MovieList(props) {
       </Box>
       {/* <SearchBox {...props} /> */}
       <Wrap p={20} spacing="5rem" alignItems="center">
-        {movieData !== "undefined" &&
-          movieData.slice(offset, offset + PER_PAGE).map((res, index) => {
+        {movies !== undefined &&
+          movies.slice(offset, offset + PER_PAGE).map((res, index) => {
             if (typeof res !== "undefined") {
               return (
                 <WrapItem key={res.id}>

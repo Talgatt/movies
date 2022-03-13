@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getMovie, getSimilar } from "../actions/movieActions";
-import { Box, Image, Badge, Button, Flex } from "@chakra-ui/react";
+import { Box, Image, Badge, Button, Flex, Container } from "@chakra-ui/react";
 import LoadingBox from "../components/LoadingBox";
 import Rating from "../components/Rating";
 import Genre from "../components/Genre";
@@ -36,39 +36,47 @@ export default function Movie(props) {
         <LoadingBox />
       ) : (
         <div>
-          <Link to="/">Back to result</Link>
-          <MovieCard key={movie.id} movie={movie} />
-          <Box>
-            <Box as="span" color="gray.600" fontSize="sm">
-              <h4>Genres</h4>
-              {/* {movie.genres
+          <Flex className="card">
+            <Link to="/">Back to result</Link>
+            <MovieCard key={movie.id} movie={movie} />
+            <Box>
+              <Box as="span" color="gray.600" fontSize="sm">
+                <h4>Genres</h4>
+                {/* {movie.genres
                         ? movie.genres.map((genre) => (
                             <span key={genre.id}>{genre.name}</span>
                           ))
                         : "N/A"} */}
-              <p className="mb-3">
-                {movie.genres.map((genre) => genre.name).join(", ")}
-              </p>
+                <p className="mb-3">
+                  {movie.genres.map((genre) => genre.name).join(", ")}
+                </p>
+              </Box>
             </Box>
-          </Box>
-
-          <Flex
-            maxW="85%"
-            p={10}
-            style={{ backgroundColor: "red", margin: 10 }}
-          >
+            <Container maxW="2xl" centerContent>
+              <Box padding="4" color="black" maxW="md">
+                {movie.overview}
+              </Box>
+            </Container>
             <Flex
-              maxH={400}
-              style={{
-                overflowX: "scroll",
-                border: "2px solid white",
-                background: "purple",
-              }}
+              maxW="85%"
+              p={10}
+              style={{ backgroundColor: "red", margin: 10 }}
             >
-              {!loadingSimilar &&
-                similarMovies.map((movie) => {
-                  return <MovieCard key={movie.id} movie={movie} width={100} />;
-                })}
+              <Flex
+                maxH={400}
+                style={{
+                  overflowX: "scroll",
+                  border: "2px solid white",
+                  background: "purple",
+                }}
+              >
+                {!loadingSimilar &&
+                  similarMovies.map((movie) => {
+                    return (
+                      <MovieCard key={movie.id} movie={movie} width={100} />
+                    );
+                  })}
+              </Flex>
             </Flex>
           </Flex>
         </div>
