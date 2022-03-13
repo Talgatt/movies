@@ -9,6 +9,9 @@ import {
   GET_RECOMMENDATIONS_FAIL,
   GET_RECOMMENDATIONS_REQUEST,
   GET_RECOMMENDATIONS_SUCCESS,
+  GET_SEARCH_FAIL,
+  GET_SEARCH_REQUEST,
+  GET_SEARCH_SUCCESS,
   GET_SIMILAR_FAIL,
   GET_SIMILAR_REQUEST,
   GET_SIMILAR_SUCCESS,
@@ -75,6 +78,19 @@ export const recommendationsReducer = (state = initialState, action) => {
     case GET_RECOMMENDATIONS_SUCCESS:
       return { loading: false, movies: action.payload };
     case GET_RECOMMENDATIONS_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const searchReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_SEARCH_REQUEST:
+      return { loading: true };
+    case GET_SEARCH_SUCCESS:
+      return { loading: false, searchResult: action.payload };
+    case GET_SEARCH_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

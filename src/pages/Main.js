@@ -41,7 +41,7 @@ import {
 } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import exploreRouterMenu from "../constants/routerMenu";
-import Movie from "./Movie";
+import MovieScreen from "./MovieScreen";
 import MovieList from "./MovieList";
 
 export default function Main() {

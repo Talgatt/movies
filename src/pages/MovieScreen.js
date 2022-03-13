@@ -5,6 +5,7 @@ import { getMovie } from "../actions/movieActions";
 import { Box, Image, Badge, Button } from "@chakra-ui/react";
 import LoadingBox from "../components/LoadingBox";
 import Rating from "../components/Rating";
+import Genre from "../components/Genre";
 
 export default function Movie(props) {
   const { id } = useParams();
@@ -56,9 +57,19 @@ export default function Movie(props) {
                       <div className="price">{movie.release_date}</div>
                     </div>
                   </li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
+                  <Box>
+                    <Box as="span" color="gray.600" fontSize="sm">
+                      <h4>Genres</h4>
+                      {/* {movie.genres
+                        ? movie.genres.map((genre) => (
+                            <span key={genre.id}>{genre.name}</span>
+                          ))
+                        : "N/A"} */}
+                      <p className="mb-3">
+                        {movie.genres.map((genre) => genre.name).join(", ")}
+                      </p>
+                    </Box>
+                  </Box>
                 </ul>
               </div>
             </div>

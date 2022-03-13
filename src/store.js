@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { searchMovies } from "./actions/movieActions";
 import { favouriteReducer } from "./reducers/favouritesReducer";
 import {
   moviesReducer,
@@ -7,6 +8,7 @@ import {
   genreReducer,
   similarReducer,
   recommendationsReducer,
+  searchReducer,
 } from "./reducers/movieReducer";
 
 const initialState = {
@@ -25,6 +27,7 @@ const reducer = combineReducers({
   genres: genreReducer,
   similar: similarReducer,
   recommendations: recommendationsReducer,
+  searchList: searchReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

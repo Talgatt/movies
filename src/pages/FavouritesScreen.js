@@ -6,9 +6,6 @@ export default function Favourites() {
   const { favouriteItems } = useSelector((state) => state.favouriteItems);
   const isFavourite = true;
 
-  console.log("here");
-  console.log(favouriteItems);
-
   return (
     <div>
       Favourites

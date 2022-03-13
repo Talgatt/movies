@@ -1,11 +1,12 @@
 import logo from "./logo.svg";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Main from "./pages/Main";
+import HomeScreen from "./pages/HomeScreen";
 import "./App.css";
 import Navbar from "./components/Navbar";
-import Movie from "./pages/Movie";
-import Favourites from "./pages/Favourites";
+import MovieScreen from "./pages/MovieScreen";
+import FavouritesScreen from "./pages/FavouritesScreen";
+import SearchScreen from "./pages/SearchScreen";
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
 
       <main>
         <Routes>
-          <Route path="/" element={<Main />} exact />
-          <Route path="/movie/:id" element={<Movie />} exact />
-          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/" element={<HomeScreen />} exact />
+          <Route path="/movie/:id" element={<MovieScreen />} exact />
+          <Route path="/favourites" element={<FavouritesScreen />} />
+          <Route path="/search/name/:name?" element={<SearchScreen />} exact />
         </Routes>
       </main>
       <footer></footer>

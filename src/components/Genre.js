@@ -47,5 +47,11 @@ export default function Genre(props) {
     // setMovies(movies);
   }, []);
 
-  return <div>Genre</div>;
+  return (
+    <div>
+      {/* {genres
+        ? movie.genres.map((genre) => <span key={genre.id}>{genre.name}</span>)
+        : "N/A"} */}
+    </div>
+  );
 }

@@ -17,8 +17,6 @@ export default function MovieItem(props) {
   const [favourites, setFavourites] = useState([]);
   const dispatch = useDispatch();
 
-  console.log("genre ssss");
-  console.log(movie.genre_ids);
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();
     dispatch(addToFavourite(movie));
@@ -76,12 +74,6 @@ export default function MovieItem(props) {
           <Box>
             <Box as="span" color="gray.600" fontSize="sm">
               {movie.release_date}
-            </Box>
-          </Box>
-
-          <Box>
-            <Box as="span" color="gray.600" fontSize="sm">
-              <Genre genre_ids={movie.genre_ids} />
             </Box>
           </Box>
 
