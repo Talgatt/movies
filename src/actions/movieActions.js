@@ -95,6 +95,8 @@ export const getSimilar = (movie_id) => async (dispatch) => {
     const res = await axios.get(
       `${BASE_API_URL}/movie/${movie_id}/similar?api_key=${API_KEY}&language=en-US&page=1`
     );
+    console.log("simlar");
+    console.log(res.data.results);
 
     dispatch({
       type: GET_SIMILAR_SUCCESS,

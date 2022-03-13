@@ -61,11 +61,11 @@ export const genreReducer = (state = initialState, action) => {
 export const similarReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_SIMILAR_REQUEST:
-      return { loading: true };
+      return { loadingSimilar: true };
     case GET_SIMILAR_SUCCESS:
-      return { loading: false, movies: action.payload };
+      return { loadingSimilar: false, similarMovies: action.payload };
     case GET_SIMILAR_FAIL:
-      return { loading: false, error: action.payload };
+      return { loadingSimilar: false, error: action.payload };
     default:
       return state;
   }
@@ -76,7 +76,7 @@ export const recommendationsReducer = (state = initialState, action) => {
     case GET_RECOMMENDATIONS_REQUEST:
       return { loading: true };
     case GET_RECOMMENDATIONS_SUCCESS:
-      return { loading: false, movies: action.payload };
+      return { loading: false, recommendationsMovies: action.payload };
     case GET_RECOMMENDATIONS_FAIL:
       return { loading: false, error: action.payload };
     default:

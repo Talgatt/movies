@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getMovies, searchMovies } from "../actions/movieActions";
 import ReactPaginate from "react-paginate";
-import MovieItem from "../components/MovieItem";
+import MovieCard from "../components/MovieCard";
 import {
   Box,
   Button,
@@ -15,6 +15,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import SearchBox from "../components/SearchBox";
 
 export default function MovieList(props) {
   const PER_PAGE = 5;
@@ -52,6 +53,8 @@ export default function MovieList(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovies("top_rated"));
+    console.log("settting movies");
+    console.log(movies);
     setMovieData(movies);
   }, []);
 
@@ -82,18 +85,21 @@ export default function MovieList(props) {
           </Button>
         </Flex>
       </Box>
+      {/* <SearchBox {...props} /> */}
       <Wrap p={20} spacing="5rem" alignItems="center">
-        {movies.slice(offset, offset + PER_PAGE).map((res, index) => {
-          if (typeof res !== "undefined") {
-            return (
-              <WrapItem key={res.id}>
-                <Center key={res.id}>
-                  <MovieItem key={res.id} movie={res} />
-                </Center>
-              </WrapItem>
-            );
-          }
-        })}
+        {movieData !== "undefined" &&
+          movieData.slice(offset, offset + PER_PAGE).map((res, index) => {
+            if (typeof res !== "undefined") {
+              return (
+                <WrapItem key={res.id}>
+                  <Center key={res.id}>
+                    <MovieCard key={res.id} movie={res} />
+                  </Center>
+                </WrapItem>
+              );
+            }
+          })}
+
         <ReactPaginate
           previousLabel={"Previous"}
           nextLabel={"Next"}

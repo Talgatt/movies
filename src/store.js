@@ -25,8 +25,8 @@ const reducer = combineReducers({
   movieDetails: movieReducer,
   favouriteItems: favouriteReducer,
   genres: genreReducer,
-  similar: similarReducer,
-  recommendations: recommendationsReducer,
+  similarList: similarReducer,
+  recommendationsList: recommendationsReducer,
   searchList: searchReducer,
 });
 

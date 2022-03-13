@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import MovieItem from "../components/MovieItem";
+import MovieCard from "../components/MovieCard";
 
 export default function Favourites() {
   const { favouriteItems } = useSelector((state) => state.favouriteItems);
@@ -11,7 +11,7 @@ export default function Favourites() {
       Favourites
       <div>
         {favouriteItems.map((movie) => (
-          <MovieItem key={movie.id} movie={movie} isFavourite={isFavourite} />
+          <MovieCard key={movie.id} movie={movie} isFavourite={isFavourite} />
         ))}
       </div>
     </div>

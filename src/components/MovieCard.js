@@ -10,12 +10,20 @@ import { useSelector } from "react-redux";
 import Genre from "./Genre";
 
 export default function MovieItem(props) {
-  const { movie, isFavourite } = props;
+  const { movie } = props;
+  const { favouriteItems } = useSelector((state) => state.favouriteItems);
   const genres = useSelector((state) => state.genres);
 
   const imageUrl = "https://image.tmdb.org/t/p/w500/";
   const [favourites, setFavourites] = useState([]);
   const dispatch = useDispatch();
+  var isFavourite = false;
+
+  favouriteItems.forEach((x) => {
+    if (x.id === movie.id) {
+      isFavourite = true;
+    }
+  });
 
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();
