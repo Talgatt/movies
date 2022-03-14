@@ -69,7 +69,7 @@ export default function Movie(props) {
               style={{ backgroundColor: "gray.600", margin: 10 }}
             >
               <Flex
-                maxH={400}
+                maxH={700}
                 style={{
                   overflowX: "scroll",
                   border: "2px solid white",

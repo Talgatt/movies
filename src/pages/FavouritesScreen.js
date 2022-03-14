@@ -1,4 +1,4 @@
-import { Box, Container, Flex } from "@chakra-ui/react";
+import { Box, Container, Flex, Wrap } from "@chakra-ui/react";
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
@@ -25,11 +25,17 @@ export default function Favourites() {
 
       <Container maxW="container.x1">
         <Flex justifyContent="center" alignItems="center">
-          {favouriteItems.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} isFavourite={isFavourite} />
-          ))}
+          <Wrap p={20} spacing="5rem" alignItems="center">
+            {favouriteItems.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                isFavourite={isFavourite}
+              />
+            ))}
+          </Wrap>
         </Flex>
-        {/* <Flex justifyContent="center" alignItems="center">
+        <Flex justifyContent="center" alignItems="center">
           <Box p={10} alignItems="center">
             <ReactPaginate
               previousLabel={"Previous"}
@@ -43,8 +49,8 @@ export default function Favourites() {
               activeClassName={"pagination__link--active"}
             />
           </Box>
-        </Flex> */}
-        <PageNavigation listSize={listSize} />
+        </Flex>
+        {/* <PageNavigation listSize={listSize} /> */}
       </Container>
     </>
   );

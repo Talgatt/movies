@@ -48,15 +48,9 @@ export default function MovieList(props) {
   const offset = currentPage * PER_PAGE;
 
   function handleInput() {
-    // if (searchQuery.length > 1) {
-    //   //props.searchMovies(searchQuery).then((m) => setMovies(m));
-    //   dispatch(searchMovies(searchQuery));
-    //   setMovieData(searchResult);
-    // }
-    // setSearchQuery("");
-    // e.preventDefault();
-    // props.history.push(`/search/${searchQuery}`);
-    navigate(`/search/${searchQuery}`);
+    if (searchQuery.length > 1) {
+      navigate(`/search/${searchQuery}`);
+    }
   }
 
   // const handleInput = (e) => {
@@ -104,8 +98,6 @@ export default function MovieList(props) {
       </Box> */}
       <Container maxW="container.x1">
         <Flex justifyContent="center" alignItems="center">
-          {/* <SearchBox {...props} /> */}
-
           <Wrap p={20} spacing="5rem" alignItems="center">
             {movies !== undefined &&
               movies.slice(offset, offset + PER_PAGE).map((res, index) => {
@@ -139,7 +131,7 @@ export default function MovieList(props) {
           </Box>
         </Flex>
 
-        <PageNavigation listSize={listSize} />
+        {/* <PageNavigation listSize={listSize} /> */}
       </Container>
     </div>
   );

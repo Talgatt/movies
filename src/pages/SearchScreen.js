@@ -1,3 +1,4 @@
+import { Container, Flex, Wrap } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -18,12 +19,15 @@ export default function SearchScreen(props) {
     <div>Loading ...</div>
   ) : (
     <div>
-      Search Results
-      <div>
-        {searchResult.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <Container maxW="container.x1">
+        <Flex justifyContent="center" alignItems="center">
+          <Wrap p={20} spacing="5rem" alignItems="center">
+            {searchResult.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </Wrap>
+        </Flex>
+      </Container>
     </div>
   );
 }

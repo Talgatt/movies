@@ -18,8 +18,6 @@ export default function MovieCard(props) {
   const [favourites, setFavourites] = useState([]);
   const dispatch = useDispatch();
   var isFavourite = false;
-  console.log("api key");
-  console.log(process.env.REACT_APP_API_KEY);
 
   if (favouriteItems !== undefined) {
     favouriteItems.forEach((x) => {
@@ -39,24 +37,18 @@ export default function MovieCard(props) {
     dispatch(removeFromFavourite(movie.id));
   };
 
-  //   const saveToLocalStorage = (items) => {
-  //     // console.log("test");
-  //     //localStorage.getItem("react-movie-app-favourites", JSON.stringify(items));
-  //     localStorage.setItem("favourites", JSON.stringify(items));
-  //   };
-
-  useEffect(() => {
-    //  const movieFavourites = JSON.parse(localStorage.getItem("favourites"));
-    //  console.log("fdfd");
-    //console.log(movieFavourites);
-    //setFavourites(movieFavourites);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div>
       <Box overflow="hidden">
         <a href={`/movie/${movie._id || movie.id}`}>
-          <Image src={`${imageUrl}${movie.poster_path}`} alt="no image" />
+          <Image
+            // className="poster"
+            className="poster__img"
+            src={`${imageUrl}${movie.poster_path}`}
+            alt="no image"
+          />
         </a>
         <Box p="6">
           <Box display="flex" alignItems="baseline">

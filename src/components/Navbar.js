@@ -23,7 +23,9 @@ export default function Navbar(props) {
   const { searchResult } = searchList;
   const navigate = useNavigate();
   function handleInput() {
-    navigate(`/search/${searchQuery}`);
+    if (searchQuery.length > 1) {
+      navigate(`/search/${searchQuery}`);
+    }
   }
   return (
     <Flex
@@ -32,7 +34,7 @@ export default function Navbar(props) {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding={10}
+      padding={1}
       {...props}
     >
       <Flex align="center" mr={5}>
@@ -43,16 +45,16 @@ export default function Navbar(props) {
         </Link>
       </Flex>
 
-      <Flex p="10" align="center" justifyContent="center" alignItems="center">
+      <Flex p="15" align="center" justifyContent="center" alignItems="center">
         <Input
           id="searchInput"
-          width="70%"
+          width="100%"
           bg="white"
-          placeholder="Search for movie here"
+          placeholder="Search for movie"
           onChange={(e) => setSearchQuery(e.target.value)}
           value={searchQuery}
         />
-        <Button bg="#FFE400" onClick={() => handleInput()}>
+        <Button className="button_search" onClick={() => handleInput()}>
           <SearchIcon />
         </Button>
       </Flex>
@@ -65,7 +67,9 @@ export default function Navbar(props) {
         <Button style={{ background: "none" }}>
           <Text style={{ marginRight: "0.7rem" }}>Favourite </Text> */}
       <Link className="nav-link" to="/favourites">
-        Favourites
+        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+          Favourites
+        </Heading>
       </Link>
       {/* </Button>
       </Box> */}

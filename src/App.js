@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} exact />
           <Route path="/movie/:id" element={<MovieScreen />} exact />
-          <Route path="/favourites" element={<FavouritesScreen />} />
+          <Route path="/favourites" element={<FavouritesScreen />} exact />
           <Route path="/search/:query" element={<SearchScreen />} exact />
         </Routes>
       </main>
