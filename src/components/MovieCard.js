@@ -18,6 +18,8 @@ export default function MovieCard(props) {
   const [favourites, setFavourites] = useState([]);
   const dispatch = useDispatch();
   var isFavourite = false;
+  console.log("api key");
+  console.log(process.env.REACT_APP_API_KEY);
 
   favouriteItems.forEach((x) => {
     if (x.id === movie.id) {
