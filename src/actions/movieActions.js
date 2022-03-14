@@ -33,10 +33,10 @@ export const getMovies = (req) => async (dispatch) => {
       payload: res.data.results,
     });
   } catch (err) {
-    dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data,
-    });
+    // dispatch({
+    //   type: GET_ERRORS,
+    //   payload: err.response.data,
+    // });
   }
 };
 
