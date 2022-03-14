@@ -36,11 +36,31 @@
     transform: rotate(360deg);
   }
 }
+.welcome {
+  background-image: url(img/movie4.jpeg);
+  background-size: cover;
+  background-blend-mode: multiply;
 
+  text-align: center;
+}
+.welcome_message {
+  margin-top: 0;
+  color: #e7b58c;
+  size: large;
+  /* letter-spacing: tighter; */
+}
+
+.card-genre-li {
+  margin-top: "1";
+  font-weight: "semibold";
+  align-self: "h4";
+  line-height: "tight";
+}
 /* Navigation Bar */
+/* #723106 */
 .navbar {
-  background-color: #280f88;
-  color: #9784e2;
+  background-color: #331804;
+  color: #e7b58c;
   text-transform: uppercase;
 }
 
@@ -145,8 +165,8 @@
 }
 
 .footer {
-  background-color: #280f88;
-  color: white;
+  background-color: #331804;
+  color: #e7b58c;
   text-align: center;
   padding: 2em 0 0.5em;
   font-size: var(--fs-h3);

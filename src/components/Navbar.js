@@ -30,25 +30,26 @@ export default function Navbar(props) {
     }
   }
   return (
-    <Flex
-      className="navbar"
-      as="nav"
-      align="center"
-      justify="space-between"
-      wrap="wrap"
-      padding={1}
-      {...props}
-    >
-      <Flex align="center" mr={5}>
-        <Link id="header-icon" to="/">
-          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            The Movie DB
-          </Heading>
-        </Link>
-      </Flex>
+    <>
+      <Flex
+        className="navbar"
+        as="nav"
+        align="center"
+        justify="space-between"
+        wrap="wrap"
+        padding={1}
+        {...props}
+      >
+        <Flex align="center" mr={5}>
+          <Link id="header-icon" to="/">
+            <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+              The Movie DB
+            </Heading>
+          </Link>
+        </Flex>
 
-      <Flex p="15" align="center" justifyContent="center" alignItems="center">
-        <InputGroup size="md">
+        <Flex p="15" align="center" justifyContent="center" alignItems="center">
+          {/* <InputGroup size="md">
           <Input
             id="searchInput"
             pr="4.5rem"
@@ -63,8 +64,8 @@ export default function Navbar(props) {
               <SearchIcon />
             </Button>
           </InputRightElement>
-        </InputGroup>
-        {/* <Input
+        </InputGroup> */}
+          {/* <Input
           id="searchInput"
           width="100%"
           bg="white"
@@ -75,22 +76,44 @@ export default function Navbar(props) {
         <Button className="button_search" onClick={() => handleInput()}>
           <SearchIcon />
         </Button> */}
-      </Flex>
+        </Flex>
 
-      {/* <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
+        {/* <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
         <HamburgerIcon />
       </Box> */}
 
-      {/* <Box style={{ marginRight: "2em" }}>
+        {/* <Box style={{ marginRight: "2em" }}>
         <Button style={{ background: "none" }}>
           <Text style={{ marginRight: "0.7rem" }}>Favourite </Text> */}
-      <Link className="nav-link" to="/favourites">
-        <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-          Favourites
-        </Heading>
-      </Link>
-      {/* </Button>
+        <Link className="nav-link" to="/favourites">
+          <Heading as="h1" size="lg" letterSpacing={"tighter"}>
+            Favourites
+          </Heading>
+        </Link>
+        {/* </Button>
       </Box> */}
-    </Flex>
+      </Flex>
+      <section className="welcome" id="services" p="10">
+        <h2 className="welcome_message">Welcome to the Movie Database</h2>
+        <Flex p="20" align="center" justifyContent="center" alignItems="center">
+          <InputGroup size="md">
+            <Input
+              id="searchInput"
+              pr="4.5rem"
+              type={"text"}
+              bg="white"
+              placeholder="Search"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchQuery}
+            />
+            <InputRightElement>
+              <Button onClick={() => handleInput()}>
+                <SearchIcon />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+        </Flex>
+      </section>
+    </>
   );
 }

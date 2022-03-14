@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { getMovies, searchMovies } from "../actions/movieActions";
+import { getGenre, getMovies, searchMovies } from "../actions/movieActions";
 import ReactPaginate from "react-paginate";
 import MovieCard from "../components/MovieCard";
 import {
@@ -12,6 +12,8 @@ import {
   Container,
   Flex,
   Input,
+  InputGroup,
+  InputRightElement,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
@@ -30,6 +32,10 @@ export default function MovieList(props) {
   const { loading, movies, error } = moviesList;
   const searchList = useSelector((state) => state.searchList);
   const { searchResult } = searchList;
+
+  const genres = useSelector((state) => state.genres);
+  const { allGenres } = genres;
+  const [genreName, setGenreName] = useState("");
 
   //const {searchMovies} = moviesSearch;
   const navigate = useNavigate();
@@ -66,11 +72,40 @@ export default function MovieList(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMovies("top_rated"));
+    dispatch(getGenre());
 
     //if (movies !== undefined) {
     //setMovieData(movies);
     //}
   }, []);
+
+  function getGenreNames(allGenres, res) {
+    const gNames = [];
+    console.log("all gener");
+    console.log(allGenres);
+    if (allGenres !== undefined) {
+      // if (allGenres.hasOwnProperty("name")) {
+      console.log("has property");
+      allGenres.map((genre) => {
+        if (res.hasOwnProperty("genre_ids")) {
+          res.genre_ids.map((id) => {
+            if (Number(id) === Number(genre.id)) {
+              console.log("Found match" + gNames.indexOf(genre.name));
+
+              if (gNames.indexOf(genre.name) == -1) {
+                console.log(genre);
+                gNames.push(genre);
+              }
+            }
+          });
+        }
+      });
+      //  }
+    }
+    console.log("gname s");
+    console.log(gNames);
+    return gNames;
+  }
 
   return loading ? (
     <div>Loading ...</div>
@@ -81,21 +116,29 @@ export default function MovieList(props) {
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div> */}
-      {/* <Box bg="#747474" p="10">
-        <Flex p="10" align="center" justifyContent="center" alignItems="center">
-          <Input
-            id="searchInput"
-            width="70%"
-            bg="white"
-            placeholder="Search for movie here"
-            onChange={(e) => setSearchQuery(e.target.value)}
-            value={searchQuery}
-          />
-          <Button bg="#FFE400" onClick={() => handleInput()}>
-            <SearchIcon />
-          </Button>
-        </Flex>
-      </Box> */}
+
+      {/* <section className="welcome" id="services">
+        <Box className="welcome" bg="#747474" p="10">
+          <Flex
+            p="10"
+            align="center"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <Input
+              id="searchInput"
+              width="70%"
+              bg="white"
+              placeholder="Search for movie here"
+              onChange={(e) => setSearchQuery(e.target.value)}
+              value={searchQuery}
+            />
+            <Button bg="#FFE400" onClick={() => handleInput()}>
+              <SearchIcon />
+            </Button>
+          </Flex>
+        </Box>
+      </section> */}
       <Container maxW="container.x1">
         <Flex justifyContent="center" alignItems="center">
           <Wrap p={20} spacing="5rem" alignItems="center">
@@ -105,7 +148,11 @@ export default function MovieList(props) {
                   return (
                     <WrapItem key={res.id}>
                       <Center key={res.id}>
-                        <MovieCard key={res.id} movie={res} />
+                        <MovieCard
+                          key={res.id}
+                          movie={res}
+                          genre={getGenreNames(allGenres, res)}
+                        />
                       </Center>
                     </WrapItem>
                   );

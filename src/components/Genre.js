@@ -7,7 +7,7 @@ import { getGenre } from "../actions/movieActions";
 export default function Genre(props) {
   const { genre_ids } = props;
   const genres = useSelector((state) => state.genres);
-  const { loading, genre } = genres;
+  const { loading, allGenres } = genres;
   const [genreName, setGenreName] = useState("");
 
   const genresArr = [];
@@ -50,11 +50,11 @@ export default function Genre(props) {
     return gNames;
   }
   //const {genre}
-  console.log("genre ids");
-  console.log(genre_ids);
-  if (!loading) {
-    console.log(genre);
-  }
+  // console.log("genre ids");
+  // console.log(genre_ids);
+  // if (!loading) {
+  //   console.log(genre);
+  // }
 
   //   useEffect(() => {
   //     console.log("genre 133");

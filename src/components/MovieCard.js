@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Image, Badge, Button } from "@chakra-ui/react";
+import { Box, Image, Badge, Button, List, ListItem } from "@chakra-ui/react";
 import { StarIcon, PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import {
@@ -26,6 +26,8 @@ export default function MovieCard(props) {
       }
     });
   }
+  console.log("genry");
+  console.log(genres);
 
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();
@@ -94,6 +96,20 @@ export default function MovieCard(props) {
               {movie.vote_count} votes
             </Box>
           </Box>
+          <List overflow="hidden">
+            {props.genre &&
+              props.genre.map((g) => (
+                <ListItem
+                  className="card-genre-li"
+                  fontWeight="semibold"
+                  key={g.id}
+                  display="inline"
+                >
+                  {g.name}
+                  {"  "}
+                </ListItem>
+              ))}
+          </List>
           {!isFavourite && (
             <Box>
               <Button onClick={addFavoriteMovieHandler}>
