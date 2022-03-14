@@ -9,7 +9,7 @@ import {
 import { useSelector } from "react-redux";
 import Genre from "./Genre";
 
-export default function MovieItem(props) {
+export default function MovieCard(props) {
   const { movie } = props;
   const { favouriteItems } = useSelector((state) => state.favouriteItems);
   const genres = useSelector((state) => state.genres);

@@ -37,34 +37,44 @@ export default function Movie(props) {
       ) : (
         <div>
           <Flex className="card_extended">
-            <MovieCard key={movie.id} movie={movie} />
-            <Box>
-              <Box as="span" color="gray.600" fontSize="sm">
-                {/* {movie.genres
+            <Flex flex-direction="row">
+              <MovieCard key={movie.id} movie={movie} />
+              <Flex flex-direction="column" fontFamily="Trebuchet MS">
+                {/* <Container maxW="2xl" centerContent> */}
+                <Box
+                  padding="4"
+                  color="black"
+                  maxW="md"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  {movie.overview}
+
+                  <Box as="span" color="gray.600" fontSize="sm">
+                    {/* {movie.genres
                         ? movie.genres.map((genre) => (
                             <span key={genre.id}>{genre.name}</span>
                           ))
                         : "N/A"} */}
-                <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
-              </Box>
-            </Box>
-            <Container maxW="2xl" centerContent>
-              <Box padding="4" color="black" maxW="md">
-                {movie.overview}
-              </Box>
-            </Container>
+                    <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
+                  </Box>
+                </Box>
+                {/* </Container> */}
+              </Flex>
+            </Flex>
             <Flex
               border-radius="1rem"
               maxW="90%"
               p={10}
-              style={{ backgroundColor: "white", margin: 10 }}
+              style={{ backgroundColor: "gray.600", margin: 10 }}
             >
               <Flex
-                maxH={200}
+                maxH={400}
                 style={{
                   overflowX: "scroll",
                   border: "2px solid white",
-                  background: "white",
+                  background: "gray.600",
+                  color: "gray.600",
                 }}
               >
                 {!loadingSimilar &&
