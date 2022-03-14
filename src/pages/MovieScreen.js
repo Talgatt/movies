@@ -4,14 +4,11 @@ import { Link, useParams } from "react-router-dom";
 import { getMovie, getSimilar } from "../actions/movieActions";
 import { Box, Image, Badge, Button, Flex, Container } from "@chakra-ui/react";
 import LoadingBox from "../components/LoadingBox";
-import Rating from "../components/Rating";
-import Genre from "../components/Genre";
+
 import MovieCard from "../components/MovieCard";
 
 export default function Movie(props) {
   const { id } = useParams();
-  const imageUrl = "https://image.tmdb.org/t/p/w500/";
-
   const dispatch = useDispatch();
   const movieDetails = useSelector((state) => state.movieDetails);
   const { loading, movie } = movieDetails;

@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Box, Image, Badge, Button, List, ListItem } from "@chakra-ui/react";
-import { StarIcon, PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
+import { StarIcon } from "@chakra-ui/icons";
 import { useDispatch } from "react-redux";
 import {
   addToFavourite,
   removeFromFavourite,
 } from "../actions/favouriteActions";
 import { useSelector } from "react-redux";
-import Genre from "./Genre";
 
 export default function MovieCard(props) {
   const { movie } = props;
   const { favouriteItems } = useSelector((state) => state.favouriteItems);
   const genres = useSelector((state) => state.genres);
-
   const imageUrl = "https://image.tmdb.org/t/p/w500/";
-  const [favourites, setFavourites] = useState([]);
+
   const dispatch = useDispatch();
   var isFavourite = false;
 
@@ -46,7 +44,6 @@ export default function MovieCard(props) {
       <Box overflow="hidden">
         <a href={`/movie/${movie._id || movie.id}`}>
           <Image
-            // className="poster"
             className="poster__img"
             src={`${imageUrl}${movie.poster_path}`}
             alt="no image"
