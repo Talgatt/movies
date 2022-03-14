@@ -114,25 +114,25 @@ export default function MovieList(props) {
           </Wrap>
         </Flex>
       </Container>
-      <Container maxW="container.x1">
-        <Flex alignItems="center" flex-direction="column" display="inline">
-          <Box p={10}>
-            <ReactPaginate
-              previousLabel={"Previous"}
-              nextLabel={"Next"}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              previousLinkClassName={"pagination__link"}
-              nextLinkClassName={"pagination__link"}
-              disabledClassName={"pagination__link--disabled"}
-              activeClassName={"pagination__link--active"}
-            />
-          </Box>
-        </Flex>
+      {/* <Container maxW="container.x1"> */}
+      <Flex justifyContent="center" alignItems="center">
+        <Box p={10} alignItems="center">
+          <ReactPaginate
+            previousLabel={"Previous"}
+            nextLabel={"Next"}
+            pageCount={pageCount}
+            onPageChange={handlePageClick}
+            containerClassName={"pagination"}
+            previousLinkClassName={"pagination__link"}
+            nextLinkClassName={"pagination__link"}
+            disabledClassName={"pagination__link--disabled"}
+            activeClassName={"pagination__link--active"}
+          />
+        </Box>
+      </Flex>
 
-        {/* <PageNavigation listSize={listSize} /> */}
-      </Container>
+      {/* <PageNavigation listSize={listSize} /> */}
+      {/* </Container> */}
     </div>
   );
 }

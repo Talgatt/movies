@@ -39,7 +39,11 @@ export default function Movie(props) {
           <Flex className="card_extended">
             <Flex flex-direction="row">
               <MovieCard key={movie.id} movie={movie} />
-              <Flex flex-direction="column" fontFamily="Trebuchet MS">
+              <Flex
+                flex-direction="column"
+                fontFamily="Trebuchet MS"
+                justifyContent="space-between"
+              >
                 {/* <Container maxW="2xl" centerContent> */}
                 <Box
                   padding="4"

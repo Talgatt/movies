@@ -51,7 +51,7 @@ export const genreReducer = (state = initialState, action) => {
     case GET_GENRE_REQUEST:
       return { loading: true };
     case GET_GENRE_SUCCESS:
-      return { loading: false, genre: action.payload };
+      return { loading: false, allGenres: action.payload };
 
     default:
       return state;

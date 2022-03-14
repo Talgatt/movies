@@ -9,6 +9,8 @@ import {
   Button,
   useDisclosure,
   Input,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
@@ -46,17 +48,33 @@ export default function Navbar(props) {
       </Flex>
 
       <Flex p="15" align="center" justifyContent="center" alignItems="center">
-        <Input
+        <InputGroup size="md">
+          <Input
+            id="searchInput"
+            pr="4.5rem"
+            type={"text"}
+            bg="white"
+            placeholder="Search"
+            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
+          />
+          <InputRightElement>
+            <Button onClick={() => handleInput()}>
+              <SearchIcon />
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        {/* <Input
           id="searchInput"
           width="100%"
           bg="white"
           placeholder="Search for movie"
           onChange={(e) => setSearchQuery(e.target.value)}
           value={searchQuery}
-        />
+        ></Input>
         <Button className="button_search" onClick={() => handleInput()}>
           <SearchIcon />
-        </Button>
+        </Button> */}
       </Flex>
 
       {/* <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>

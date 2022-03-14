@@ -71,6 +71,7 @@
     opacity 250 ms linear;
   /* width: 260px;
   height: 200px; */
+  border-radius: 8px;
   width: 300px;
   overflow: hidden;
   object-fit: inherit;
@@ -80,12 +81,14 @@
 .poster__item:focus {
   position: relative;
   z-index: 2;
+  border-radius: 8px;
 }
 
 .poster__img:hover,
 .poster__item:focus .poster__img {
   transform: scale(1.2);
   opacity: 0.75;
+  border-radius: 8px;
 }
 
 /* Card */
