@@ -29,7 +29,7 @@ export default function Navbar(props) {
       <Flex align="center" mr={5}>
         <Link id="header-icon" to="/">
           <Heading as="h1" size="lg" letterSpacing={"tighter"}>
-            MovieDB
+            The Movie DB
           </Heading>
         </Link>
       </Flex>
@@ -41,8 +41,8 @@ export default function Navbar(props) {
       <Box style={{ marginRight: "2em" }}>
         <Button style={{ background: "none" }}>
           {/* <Text style={{ marginRight: "0.7rem" }}>Favourite </Text> */}
-          <Link className="nav-link" to="/">
-            Favourite
+          <Link className="nav-link" to="/favourites">
+            Favourites
           </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"

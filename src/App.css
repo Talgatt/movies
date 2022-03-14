@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+/* Card */
+.card_small {
+  border: 0.1rem #c0c0c0;
+  background-color: #f8f8f8;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card_extended {
+  border: 0.1rem #c0c0c0;
+  background-color: #f8f8f8;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pagination a {
+  padding: 10px;
+  border: 1px solid #272727;
+  color: #1485a7;
+}
+
+.pagination__link {
+  font-weight: bold;
+}
+
+.pagination__link--active a {
+  color: #1485a7;
+  background: #272727;
+}
+
+.pagination__link--disabled a {
+  color: rgb(198, 197, 202);
+  border: 1px solid rgb(198, 197, 202);
+}

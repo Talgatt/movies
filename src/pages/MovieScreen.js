@@ -36,8 +36,7 @@ export default function Movie(props) {
         <LoadingBox />
       ) : (
         <div>
-          <Flex className="card">
-            <Link to="/">Back to result</Link>
+          <Flex className="card_extended">
             <MovieCard key={movie.id} movie={movie} />
             <Box>
               <Box as="span" color="gray.600" fontSize="sm">
