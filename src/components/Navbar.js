@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Box,
   Stack,
@@ -8,22 +8,31 @@ import {
   Text,
   Button,
   useDisclosure,
+  Input,
 } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, SearchIcon } from "@chakra-ui/icons";
+import { useSelector } from "react-redux";
 
 export default function Navbar(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleToggle = () => (isOpen ? onClose() : onOpen());
 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const searchList = useSelector((state) => state.searchList);
+  const { searchResult } = searchList;
+  const navigate = useNavigate();
+  function handleInput() {
+    navigate(`/search/${searchQuery}`);
+  }
   return (
     <Flex
+      className="navbar"
       as="nav"
       align="center"
       justify="space-between"
       wrap="wrap"
       padding={10}
-      bg="#272727"
-      color="#14A76C"
       {...props}
     >
       <Flex align="center" mr={5}>
@@ -34,31 +43,32 @@ export default function Navbar(props) {
         </Link>
       </Flex>
 
-      <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
-        <HamburgerIcon />
-      </Box>
-
-      <Box style={{ marginRight: "2em" }}>
-        <Button style={{ background: "none" }}>
-          {/* <Text style={{ marginRight: "0.7rem" }}>Favourite </Text> */}
-          <Link className="nav-link" to="/favourites">
-            Favourites
-          </Link>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="25"
-            height="25"
-            fillRule="currentColor"
-            className="bi bi-heart-fill"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fillRule="evenodd"
-              d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-            />
-          </svg>
+      <Flex p="10" align="center" justifyContent="center" alignItems="center">
+        <Input
+          id="searchInput"
+          width="70%"
+          bg="white"
+          placeholder="Search for movie here"
+          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
+        />
+        <Button bg="#FFE400" onClick={() => handleInput()}>
+          <SearchIcon />
         </Button>
-      </Box>
+      </Flex>
+
+      {/* <Box display={{ base: "block", md: "none" }} onClick={handleToggle}>
+        <HamburgerIcon />
+      </Box> */}
+
+      {/* <Box style={{ marginRight: "2em" }}>
+        <Button style={{ background: "none" }}>
+          <Text style={{ marginRight: "0.7rem" }}>Favourite </Text> */}
+      <Link className="nav-link" to="/favourites">
+        Favourites
+      </Link>
+      {/* </Button>
+      </Box> */}
     </Flex>
   );
 }

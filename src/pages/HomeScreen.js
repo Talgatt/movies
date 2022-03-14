@@ -87,7 +87,7 @@ export default function MovieList(props) {
           <MovieItem key={movie.id} movie={movie} />
         ))}
       </div> */}
-      <Box bg="#747474" p="10">
+      {/* <Box bg="#747474" p="10">
         <Flex p="10" align="center" justifyContent="center" alignItems="center">
           <Input
             id="searchInput"
@@ -101,7 +101,7 @@ export default function MovieList(props) {
             <SearchIcon />
           </Button>
         </Flex>
-      </Box>
+      </Box> */}
       <Container maxW="container.x1">
         <Flex justifyContent="center" alignItems="center">
           {/* <SearchBox {...props} /> */}
@@ -123,7 +123,7 @@ export default function MovieList(props) {
         </Flex>
       </Container>
       <Container maxW="container.x1">
-        {/* <Flex alignItems="center" flex-direction="column" display="inline">
+        <Flex alignItems="center" flex-direction="column" display="inline">
           <Box p={10}>
             <ReactPaginate
               previousLabel={"Previous"}
@@ -137,7 +137,7 @@ export default function MovieList(props) {
               activeClassName={"pagination__link--active"}
             />
           </Box>
-        </Flex> */}
+        </Flex>
 
         <PageNavigation listSize={listSize} />
       </Container>

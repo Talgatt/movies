@@ -37,6 +37,13 @@
   }
 }
 
+/* Navigation Bar */
+.navbar {
+  background-color: #170a4d;
+  color: #9784e2;
+  text-transform: uppercase;
+}
+
 /* Card */
 .card_small {
   border: 0.1rem #c0c0c0;
@@ -48,6 +55,10 @@
 }
 
 .card_extended {
+  max-width: sm;
+  border-width: 1px;
+  border-radius: lg;
+  overflow: "hidden";
   border: 0.1rem #c0c0c0;
   background-color: #f8f8f8;
   border-radius: 1rem;

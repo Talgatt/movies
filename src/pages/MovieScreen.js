@@ -40,15 +40,12 @@ export default function Movie(props) {
             <MovieCard key={movie.id} movie={movie} />
             <Box>
               <Box as="span" color="gray.600" fontSize="sm">
-                <h4>Genres</h4>
                 {/* {movie.genres
                         ? movie.genres.map((genre) => (
                             <span key={genre.id}>{genre.name}</span>
                           ))
                         : "N/A"} */}
-                <p className="mb-3">
-                  {movie.genres.map((genre) => genre.name).join(", ")}
-                </p>
+                <p>{movie.genres.map((genre) => genre.name).join(", ")}</p>
               </Box>
             </Box>
             <Container maxW="2xl" centerContent>
@@ -57,22 +54,28 @@ export default function Movie(props) {
               </Box>
             </Container>
             <Flex
-              maxW="85%"
+              border-radius="1rem"
+              maxW="90%"
               p={10}
-              style={{ backgroundColor: "red", margin: 10 }}
+              style={{ backgroundColor: "white", margin: 10 }}
             >
               <Flex
-                maxH={400}
+                maxH={200}
                 style={{
                   overflowX: "scroll",
                   border: "2px solid white",
-                  background: "purple",
+                  background: "white",
                 }}
               >
                 {!loadingSimilar &&
                   similarMovies.map((movie) => {
                     return (
-                      <MovieCard key={movie.id} movie={movie} width={100} />
+                      <MovieCard
+                        key={movie.id}
+                        movie={movie}
+                        width={100}
+                        maxH={200}
+                      />
                     );
                   })}
               </Flex>

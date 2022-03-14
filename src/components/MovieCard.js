@@ -50,7 +50,7 @@ export default function MovieItem(props) {
 
   return (
     <div>
-      <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Box overflow="hidden">
         <a href={`/movie/${movie._id || movie.id}`}>
           <Image src={`${imageUrl}${movie.poster_path}`} alt="no image" />
         </a>

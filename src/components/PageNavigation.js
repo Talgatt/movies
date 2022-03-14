@@ -6,13 +6,13 @@ export default function PageNavigation(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const PER_PAGE = 5;
   const { listSize } = props;
-  var pageCount = 1;
-  console.log("list size");
-  console.log(listSize);
+  var pageCount = 0;
+  //   console.log("list size");
+  //   console.log(listSize);
 
   pageCount = Math.ceil(listSize / PER_PAGE);
-  console.log("page count");
-  console.log(pageCount);
+  //   console.log("page count");
+  //   console.log(pageCount);
 
   const offset = currentPage * PER_PAGE;
 
