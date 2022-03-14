@@ -21,11 +21,13 @@ export default function MovieCard(props) {
   console.log("api key");
   console.log(process.env.REACT_APP_API_KEY);
 
-  favouriteItems.forEach((x) => {
-    if (x.id === movie.id) {
-      isFavourite = true;
-    }
-  });
+  if (favouriteItems !== undefined) {
+    favouriteItems.forEach((x) => {
+      if (x.id === movie.id) {
+        isFavourite = true;
+      }
+    });
+  }
 
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();
