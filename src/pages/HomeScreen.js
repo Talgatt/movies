@@ -9,7 +9,7 @@ import { Box, Center, Container, Flex, Wrap, WrapItem } from "@chakra-ui/react";
 import { getGenreNames } from "../utilities/utilities";
 
 export default function MovieList(props) {
-  const PER_PAGE = 5;
+  const PER_PAGE = 8;
   const moviesList = useSelector((state) => state.moviesList);
   const [currentPage, setCurrentPage] = useState(0);
   const { loading, movies } = moviesList;
@@ -33,25 +33,6 @@ export default function MovieList(props) {
     dispatch(getMovies("top_rated"));
     dispatch(getGenre());
   }, []);
-
-  // function getGenreNames(allGenres, res) {
-  //   const gNames = [];
-  //   if (allGenres !== undefined) {
-  //     allGenres.map((genre) => {
-  //       if (res.hasOwnProperty("genre_ids")) {
-  //         res.genre_ids.map((id) => {
-  //           if (Number(id) === Number(genre.id)) {
-  //             if (gNames.indexOf(genre.name) == -1) {
-  //               gNames.push(genre);
-  //             }
-  //           }
-  //         });
-  //       }
-  //     });
-  //   }
-
-  //   return gNames;
-  // }
 
   return loading ? (
     <div>Loading ...</div>

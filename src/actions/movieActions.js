@@ -72,8 +72,6 @@ export const getGenre = () => async (dispatch) => {
       `${BASE_API_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
     );
 
-    console.log("genres are");
-    console.log(res);
     dispatch({
       type: GET_GENRE_SUCCESS,
       payload: res.data.genres,
@@ -95,8 +93,6 @@ export const getSimilar = (movie_id) => async (dispatch) => {
     const res = await axios.get(
       `${BASE_API_URL}/movie/${movie_id}/similar?api_key=${API_KEY}&language=en-US&page=1`
     );
-    console.log("simlar");
-    console.log(res.data.results);
 
     dispatch({
       type: GET_SIMILAR_SUCCESS,
@@ -119,8 +115,7 @@ export const getRecommendations = (movie_id) => async (dispatch) => {
     const res = await axios.get(
       `${BASE_API_URL}/movie/${movie_id}/recommendations?api_key=${API_KEY}&language=en-US&page=1`
     );
-    console.log("show data");
-    console.log(res.data.results);
+
     dispatch({
       type: GET_RECOMMENDATIONS_SUCCESS,
       payload: res.data.results,

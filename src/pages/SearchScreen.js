@@ -12,10 +12,8 @@ export default function SearchScreen(props) {
   const { loading, searchResult } = searchList;
   const { query } = useParams();
   const dispatch = useDispatch();
-  const PER_PAGE = 5;
-
+  const PER_PAGE = 8;
   const [currentPage, setCurrentPage] = useState(0);
-
   const genres = useSelector((state) => state.genres);
   const { allGenres } = genres;
 

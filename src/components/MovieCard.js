@@ -24,8 +24,6 @@ export default function MovieCard(props) {
       }
     });
   }
-  console.log("genry");
-  console.log(genres);
 
   const addFavoriteMovieHandler = (e) => {
     e.preventDefault();

@@ -7,7 +7,6 @@ import Navbar from "./components/Navbar";
 import MovieScreen from "./pages/MovieScreen";
 import FavouritesScreen from "./pages/FavouritesScreen";
 import SearchScreen from "./pages/SearchScreen";
-import SearchBox from "./components/SearchBox";
 import Footer from "./components/Footer";
 
 function App() {

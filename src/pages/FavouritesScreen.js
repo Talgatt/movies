@@ -13,7 +13,7 @@ export default function Favourites() {
   const [currentPage, setCurrentPage] = useState(0);
   const genres = useSelector((state) => state.genres);
   const { allGenres } = genres;
-  const PER_PAGE = 5;
+  const PER_PAGE = 8;
   var pageCount = 0;
   // const listSize = favouriteItems.length;
   if (favouriteItems !== undefined) {

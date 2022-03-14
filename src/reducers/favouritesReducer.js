@@ -12,7 +12,6 @@ export const favouriteReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_FAVOURITE:
       const item = action.payload;
-      console.log(state.favouriteItems);
 
       if (state.favouriteItems !== undefined) {
         const existingItem = state.favouriteItems.find((x) => x.id === item.id);

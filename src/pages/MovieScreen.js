@@ -17,11 +17,6 @@ export default function Movie(props) {
   const recommendationsList = useSelector((state) => state.recommendationsList);
   const { recommendationsMovies } = recommendationsList;
 
-  if (!loadingSimilar) {
-    console.log("similar");
-    console.log(similarMovies);
-  }
-
   useEffect(() => {
     dispatch(getMovie(id));
     dispatch(getSimilar(id));
